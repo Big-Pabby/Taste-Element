@@ -1,11 +1,13 @@
 <template>
   <div class="get-started">
-    <NuxtLogo class="start-logo" />
     <div class="starting-page">
       <div class="start-image">
-        <img class="image" src="../static/chefmale.png" alt="">
+        <img class="image" src="../static/chef-removebg-preview.png" alt="">
       </div>
       <div class="start-content">
+        <div class="start-logo">
+          <NuxtLogo />
+        </div>
         <h1>Order & Let's Eat Healthy <span>Food</span></h1>
         <p>Our job is to fill your tummy with delicious food and fast delivery</p>
         <nuxt-link to="/register" class="btn btn-primary">Get Started</nuxt-link>
@@ -22,10 +24,12 @@ export default {
 </script>
 
 <style scoped>
+  .get-started {
+    height: 100vh;
+  }
   .starting-page {
     display: flex;
     flex-direction: row-reverse;
-    max-height: 100vh;
     align-items: center;
   }
   
@@ -42,8 +46,7 @@ export default {
 
   .start-logo {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 30px;
   }
 
   .image {

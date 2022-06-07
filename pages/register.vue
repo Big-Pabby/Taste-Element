@@ -1,31 +1,40 @@
 <template>
   <div class="SignUp">
-    <div class="signUp-header">
-      <NuxtLogo class="signup-logo" />
-      <h2>Sign Up</h2>
-      <p>Create a free account</p>
-      <p class="login">Already have an account? <nuxt-link to="/login">Log In</nuxt-link></p>
-    </div>
+    <div class="signup-flex">
+      <div class="signup-left">
+        <div class="signUp-header">
+          <NuxtLogo class="signup-logo" />
+          <h2>Sign Up</h2>
+          <p>Create a free account</p>
+          <p class="login">Already have an account? <nuxt-link to="/login">Log In</nuxt-link></p>
+        </div>
 
-    <form action="">
-      <div class="input-field">
-        <label for="name">Name</label>
-        <input type="text" name="name" required>
+        <form action="">
+          <div class="input-field">
+            <label for="name">Name</label>
+            <input type="text" name="name" required>
+          </div>
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" name="email" required>
+          </div>
+          <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+          </div>
+          <div class="input-field">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" name="confirmPassword" required>
+          </div>
+          <input class="signup-btn" type="submit" value="Sign Up">
+        </form>
       </div>
-      <div class="input-field">
-        <label for="email">Email</label>
-        <input type="email" name="email" required>
+
+      <div class="signup-right">
+        <img src="../static/chefmale.png" alt="">
       </div>
-      <div class="input-field">
-        <label for="password">Password</label>
-        <input type="password" name="password" required>
-      </div>
-      <div class="input-field">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" name="confirmPassword" required>
-      </div>
-      <input class="signup-btn" type="submit" value="Sign Up">
-    </form>
+    </div>
+    
   </div>
 </template>
 
@@ -37,6 +46,19 @@ export default {
 
 <style>
   .SignUp {
+    height: 100vh;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .signup-flex {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .signup-right {
     height: 100vh;
   }
 
@@ -93,4 +115,10 @@ export default {
     border: 1px solid var(--color-bg-secondary);
     color: var(--color-primary);
   }
+
+  @media screen and (max-width: 960px) {
+    .signup-right {
+      display: none;
+    }
+}
 </style>
