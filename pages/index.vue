@@ -1,8 +1,10 @@
 <template>
   <div class="get-started">
     <div class="starting-page">
-      <div class="start-image">
-        <img class="image" src="../static/chef-removebg-preview.png" alt="">
+      <div class="start-image-bg">
+        <div class="start-image">
+          <img src="../static/chef-removebg-preview.png" alt="">
+        </div>
       </div>
       <div class="start-content">
         <div class="start-logo">
@@ -11,7 +13,7 @@
         <h1>Order & Let's Eat Healthy <span>Food</span></h1>
         <p>Our job is to fill your tummy with delicious food and fast delivery</p>
         <nuxt-link to="/register" class="btn btn-primary">Get Started</nuxt-link>
-        <nuxt-link to="/login" class="link">I already have an account</nuxt-link>
+        <nuxt-link to="/login" class="link link-color">I already have an account</nuxt-link>
       </div>
     </div>
   </div>
@@ -33,7 +35,7 @@ export default {
     align-items: center;
   }
   
-  .start-image {
+  .start-image-bg {
     background: url('../static/background2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,17 +51,20 @@ export default {
     top: 30px;
   }
 
-  .image {
-    height: 70%;
+  .start-image {
     border-radius: 30%;
   }
 
   .link {
     display: block;
-    color: var(--color-primary);
     margin-top: 20px;
     font-size: 16px;
     font-weight: bold;
+    transition: var(--transition);
+  }
+
+  .link:hover {
+    color: #1890ff;
   }
 
   .start-content {
@@ -70,37 +75,44 @@ export default {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   p {
     margin-bottom: 30px;
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 760px) {
     .starting-page{
       flex-direction: column;
       background: url('../static/background2.jpg');
     }
 
-    .start-image {
+    .start-image-bg {
       height: 55vh;
-      width: 100%;
+      background: none;
     }
 
-    .image {
-      height: 300px;
+    .start-image {
       position: absolute;
+      width: 50%;
       bottom: 40vh;
-      z-index: 2;
     }
 
     .start-content {
-      width: 100%;
+      width: 95%;
       height: 45vh;
       padding: 10px 20px;
+      background: #ffffffdf;
       text-align: center;
       border-radius: 60px 60px 0 0;
       z-index: 5;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .start-image {
+      width: 75%;
     }
   }
 </style>

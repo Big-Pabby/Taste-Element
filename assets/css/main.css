@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 :root {
@@ -15,6 +18,11 @@
     --container-width-lg: 75%;
     --container-width-md: 86%;
     --container-width-sm: 90%;
+}
+
+.container {
+    width: var(--container-width-lg);
+    margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5 {
@@ -51,6 +59,16 @@ span {
     background-color: var(--color-bg-secondary);
     color: var(--color-primary);
 }
+
+.link-color {
+    color: var(--color-bg-primary);
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
 
 @media screen and (max-width: 1024px) {
     .container {

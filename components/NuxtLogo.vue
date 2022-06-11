@@ -16,11 +16,10 @@ export default {
     font-size: 18px;
     font-weight: bold;
     display: inline-block;
-    cursor: pointer;
+    cursor: default;
     padding: 10px 20px;
     color: #fff;
     border-radius: 10px;
-    
     background: var(--color-primary);
   }
 </style>

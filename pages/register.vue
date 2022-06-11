@@ -6,7 +6,7 @@
           <NuxtLogo class="signup-logo" />
           <h2>Sign Up</h2>
           <p>Create a free account</p>
-          <p class="login">Already have an account? <nuxt-link to="/login">Log In</nuxt-link></p>
+          <p class="login">Already have an account? <nuxt-link to="/login" class="link-color">Log In</nuxt-link></p>
         </div>
 
         <form action="">

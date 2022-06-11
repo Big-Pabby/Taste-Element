@@ -9,7 +9,7 @@
           <NuxtLogo class="signup-logo" />
           <h2>Login</h2>
           <p>Welcome Back</p>
-          <p class="login">Don't have an account? <nuxt-link to="/register">Sign Up</nuxt-link></p>
+          <p class="login">Don't have an account? <nuxt-link to="/register" class="link-color">Sign Up</nuxt-link></p>
         </div>
 
         <form action="">
