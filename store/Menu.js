@@ -79,24 +79,19 @@ export const useMenuStore = defineStore("menu's", {
     },
 
     getters: {
-        Menus: (state) => state.menus,
+        Menus: (state) => state.menus.filter(foodMenu => {
+            if(state.searchField === ''){
+                return foodMenu
+            } else {
+                return foodMenu.title.toLowerCase().includes(state.searchField.toLowerCase())
+            }    
+        }),
     },
 
     actions: {
-        onSearch(search) {
-            this.menus = this.menus.filter(foodMenu => {
-                if(search === '') {
-                    return this.menus
-                } else {
-                    return this.menus.type.toLowerCase().includes(search.toLowerCase())
-                }  
-            })
-        },
 
         onSearchChange(search) {
-            console.log(search)
-            return this.searchField = search
-            
+            return this.searchField = search  
         },
     }
 })

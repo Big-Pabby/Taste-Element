@@ -5,7 +5,7 @@
             <showcaseCarousel />
 
             <div class="input-field">
-                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model="search">
+                <input type="search" placeholder="🔍 Search Foods..." name="search" @change="search">
             </div>
 
             <div class="categories">
@@ -44,12 +44,15 @@ export default {
 
     data() {
         return {
-            search: '',
+            menuStore: useMenuStore()
         }
     },
 
     methods: {
-        
+        search(e) {
+            console.log(e.target.value)
+            this.menuStore.onSearchChange(e.target.value)
+        }
     } 
 }
 </script>
