@@ -72,11 +72,31 @@ export const useMenuStore = defineStore("menu's", {
                     image: 'cornmeal-johnnycakes.webp',
                     category: 'Pastery'
                 },
-            ]
+            ],
+
+            searchField: ''
         }
     },
 
     getters: {
         Menus: (state) => state.menus,
+    },
+
+    actions: {
+        onSearch(search) {
+            this.menus = this.menus.filter(foodMenu => {
+                if(search === '') {
+                    return this.menus
+                } else {
+                    return this.menus.type.toLowerCase().includes(search.toLowerCase())
+                }  
+            })
+        },
+
+        onSearchChange(search) {
+            console.log(search)
+            return this.searchField = search
+            
+        },
     }
 })

@@ -33,6 +33,7 @@ export default {
         position: fixed;
         top: 0;
         width: 100%;
+        z-index: 100;
     }
 
     .nav-link {
@@ -65,4 +66,10 @@ export default {
         color: var(--color-bg-primary);
         margin-right: 10px;
     }
+  
+@media screen and (max-width: 500px) {
+    nav {
+        display: none;
+    }
+}
 </style>

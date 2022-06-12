@@ -2,18 +2,10 @@
     <div>
         <Navigation />
         <div class="container">
-            <div class="showcase">
-                <div class="content">
-                    <h2>Hello Victor, Grab your <span>Delicious Meal!!!</span></h2>
-                    <button class="btn btn-primary">Menu <Icon class="icon" icon="akar-icons:arrow-right" /></button>
-                </div>
-                <div class="showcase-image">
-                    <img src="../static/delivery-man-removebg-preview.png" alt="">
-                </div>
-            </div>
+            <showcaseCarousel />
 
             <div class="input-field">
-                <input type="search" placeholder="🔍 Search Foods..." name="search">
+                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model="search">
             </div>
 
             <div class="categories">
@@ -46,40 +38,23 @@
 </template>
 
 <script>
-import { Icon } from '@iconify/vue2';
+import { useMenuStore } from '~/store/Menu';
 
 export default {
-    components: {
-        Icon
-    },
 
     data() {
         return {
-
+            search: '',
         }
-    }
+    },
+
+    methods: {
+        
+    } 
 }
 </script>
 
 <style scoped>
-    .showcase {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background: var(--color-bg-primary);
-        margin-top: 100px;
-        border-radius: 60px;
-    }
-
-    .content span {
-        font-size: 24px;
-        font-weight: bold;
-        color: #fff;
-    }
-
-    .content {
-        width: 30%;
-    }
 
     .category {
         background: var(--color-bg-secondary);
@@ -101,15 +76,6 @@ export default {
     .category-flex {
         display: flex;
         justify-content: space-between;
-    }
-
-    button {
-       display: flex;
-       align-items: center;
-    }
-
-    .showcase-image {
-        width: 50%;
     }
 
     .categories {
