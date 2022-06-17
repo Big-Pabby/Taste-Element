@@ -1,16 +1,34 @@
 <template>
-    <div class="menus">
-        <div v-for="menu in menuStore.Menus" class="menu" :key="menu.id">
-            <div class="menu-image">
-                <img :src="require(`../static/Menus/${menu.image}`)" alt="">
-            </div>
-            <h2>{{menu.title}}</h2>
-            <p>{{menu.category}}</p>
-            <div class="menu-flex">
-                <h3><span>$</span>15.00</h3>
-                <nuxt-link to="#" class="btn">Add to Cart</nuxt-link>
+    <div class="showMenu">
+
+        <div v-if="search !== ''" class="menus">
+            <div v-for="menu in menuStore.searchedMenu" class="menu" :key="menu.id">
+                <div class="menu-image">
+                    <img :src="require(`../static/Menus/${menu.image}`)" alt="">
+                </div>
+                <h2>{{menu.title}}</h2>
+                <p>{{menu.category}}</p>
+                <div class="menu-flex">
+                    <h3><span>$</span>15.00</h3>
+                    <nuxt-link to="#" class="btn">View Menu</nuxt-link>
+                </div>
             </div>
         </div>
+
+        <div v-else class="menus">
+            <div v-for="menu in menuStore.Menus" class="menu" :key="menu.id">
+                <div class="menu-image">
+                    <img :src="require(`../static/Menus/${menu.image}`)" alt="">
+                </div>
+                <h2>{{menu.title}}</h2>
+                <p>{{menu.category}}</p>
+                <div class="menu-flex">
+                    <h3><span>$</span>15.00</h3>
+                    <nuxt-link to="#" class="btn">View Menu</nuxt-link>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </template>
 
@@ -22,7 +40,9 @@ export default {
         return {
             menuStore: useMenuStore(),
         }
-    }
+    },
+
+    props: ['search'],
 }
 </script>
 
@@ -38,7 +58,6 @@ export default {
     .menu {
          padding: 20px 10px;
          border-radius: 30px 30px 0 0;
-         box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
 
     .menu-image img {

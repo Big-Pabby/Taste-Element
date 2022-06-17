@@ -1,3 +1,4 @@
+
 import { defineStore } from "pinia";
 
 export const useMenuStore = defineStore("menu's", {
@@ -74,24 +75,54 @@ export const useMenuStore = defineStore("menu's", {
                 },
             ],
 
+            searchMenu: [],
+            category: '',
             searchField: ''
         }
     },
 
     getters: {
         Menus: (state) => state.menus.filter(foodMenu => {
-            if(state.searchField === ''){
+            if(state.category === '') {
                 return foodMenu
             } else {
-                return foodMenu.title.toLowerCase().includes(state.searchField.toLowerCase())
-            }    
+                return foodMenu.category === state.category
+            }
         }),
+        searchedMenu: (state) => state.searchMenu
     },
 
     actions: {
 
         onSearchChange(search) {
-            return this.searchField = search  
+            this.searchField = search
+            if(this.searchField === '') {
+                return this.searchMenu = []
+            } else {
+                
+                this.searchMenu = this.menus.filter(menu => {
+                    return menu.title.toLowerCase().includes(this.searchField.toLowerCase())
+                    
+                })
+            }
+            
         },
+
+        clearSearchMenu() {
+            this.searchMenu = []
+            this.searchField = ''
+        },
+
+        meatCategory() {
+            this.category = 'Meat'
+        },
+
+        pizzaCategory() {
+            this.category = 'Pizza'
+        },
+
+        burgerCategory() {
+            this.category = 'Burger'
+        }
     }
 })

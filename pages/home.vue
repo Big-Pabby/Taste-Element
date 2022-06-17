@@ -5,34 +5,35 @@
             <showcaseCarousel />
 
             <div class="input-field">
-                <input type="search" placeholder="🔍 Search Foods..." name="search" @change="search">
+                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model="search" @change="getSearchedMovies">
+                <button v-show="search !== ''" @click="clearSearch">Clear Search</button>
             </div>
 
             <div class="categories">
                 <h2>Explore Categories</h2>
                 <div class="category-flex">
-                    <div class="category">
+                    <div class="category" @click="filterBurger">
                         <div class="category-image">
                             <img src="../static/burger.svg" alt="">
                         </div>
                         <h4>Burger</h4>
                     </div>
-                    <div class="category">
+                    <div class="category" @click="filterPizza">
                         <div class="category-image">
                             <img src="../static/pizza.png" alt="">
                         </div>
                         <h4>Pizza</h4>
                     </div>
-                    <div class="category">
+                    <div class="category" @click="filterMeat">
                         <div class="category-image">
                             <img src="../static/sushi.png" alt="">
                         </div>
-                        <h4>Sushi</h4>
+                        <h4>Meat</h4>
                     </div>
                 </div>
             </div>
 
-            <Menu />
+            <Menu :search="search" />
         </div>
     </div>
 </template>
@@ -44,16 +45,33 @@ export default {
 
     data() {
         return {
-            menuStore: useMenuStore()
+            menuStore: useMenuStore(),
+            search: ''
         }
     },
 
     methods: {
-        search(e) {
-            console.log(e.target.value)
-            this.menuStore.onSearchChange(e.target.value)
-        }
-    } 
+        getSearchedMovies() {
+            this.menuStore.onSearchChange(this.search)   
+        },
+
+        clearSearch () {
+            this.menuStore.clearSearchMenu()
+            this.search = ''
+        },
+
+        filterMeat() {
+            this.menuStore.meatCategory()
+        },
+
+        filterPizza() {
+            this.menuStore.pizzaCategory()
+        },
+
+        filterBurger() {
+            this.menuStore.burgerCategory()
+        },
+    },
 }
 </script>
 
@@ -96,15 +114,34 @@ export default {
     .input-field {
         text-align: center;
         margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    button {
+        outline: none;
+        cursor: pointer;
+        padding: 0px 10px;
+        border: none;
+        color: #fff;
+        background: var(--color-bg-primary);
+        transition: var(--transition);
+    }
+
+    button:hover {
+        opacity: 0.75;
     }
 
     input {
-        width: 300px;
-        border-radius: 50px;
+        max-width: 400px;
+        margin: 0;
         padding: 10px 15px;
         background: #f4f4f4;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         border: none;
         outline: none;
+    }
+
+    @media screen and (max-width: 600px) {
+       
     }
 </style>
