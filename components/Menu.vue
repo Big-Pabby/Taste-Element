@@ -11,13 +11,13 @@
                     <p>{{menu.category}}</p>
                     <div class="menu-flex">
                         <h3><span>$</span>15.00</h3>
-                        <nuxt-link to="#" class="btn">View Menu</nuxt-link>
+                        <nuxt-link :to="{name: 'menus-menuid', params:{menuid : menu.id}}" class="btn">View Menu</nuxt-link>
                     </div>
                 </div>
             </div>
             
             <div v-if="menuStore.searchedMenu.length === 0" class="msg">
-                <h2>Sorry the menu that you are looking for is not available</h2>
+                <h2>Sorry the menu you are looking for is not available</h2>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
                 <p>{{menu.category}}</p>
                 <div class="menu-flex">
                     <h3><span>$</span>15.00</h3>
-                    <nuxt-link to="#" class="btn">View Menu</nuxt-link>
+                    <nuxt-link :to="{name: 'menus-menuid', params:{menuid : menu.id}}" class="btn">View Menu</nuxt-link>
                 </div>
             </div>
         </div>

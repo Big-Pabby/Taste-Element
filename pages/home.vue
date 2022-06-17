@@ -5,7 +5,7 @@
             <showcaseCarousel />
 
             <div class="input-field">
-                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model.lazy="search" @keyup.enter="getSearchedMovies">
+                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model.lazy="search" @change="getSearchedMovies">
                 <button v-show="search !== ''" @click="clearSearch">Clear Search</button>
             </div>
 

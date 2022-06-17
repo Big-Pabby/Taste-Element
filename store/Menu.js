@@ -77,7 +77,8 @@ export const useMenuStore = defineStore("menu's", {
 
             searchMenu: [],
             category: '',
-            searchField: ''
+            searchField: '',
+            singleMenu: {}
         }
     },
 
@@ -89,7 +90,8 @@ export const useMenuStore = defineStore("menu's", {
                 return foodMenu.category === state.category
             }
         }),
-        searchedMenu: (state) => state.searchMenu
+        searchedMenu: (state) => state.searchMenu,
+        fetchSingleMenu: (state) => state.singleMenu
     },
 
     actions: {
@@ -111,6 +113,12 @@ export const useMenuStore = defineStore("menu's", {
         clearSearchMenu() {
             this.searchMenu = []
             this.searchField = ''
+        },
+
+        getSingleMenu(id) {
+            this.singleMenu = this.menus.filter(menu => {
+                return menu.id === id
+            })
         },
 
         meatCategory() {
