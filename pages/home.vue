@@ -5,7 +5,7 @@
             <showcaseCarousel />
 
             <div class="input-field">
-                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model="search" @change="getSearchedMovies">
+                <input type="search" placeholder="🔍 Search Foods..." name="search" v-model.lazy="search" @keyup.enter="getSearchedMovies">
                 <button v-show="search !== ''" @click="clearSearch">Clear Search</button>
             </div>
 
@@ -33,7 +33,9 @@
                 </div>
             </div>
 
-            <Menu :search="search" />
+            <Loading v-if="loading" />
+
+            <Menu v-else :search="search" />
         </div>
     </div>
 </template>
@@ -46,13 +48,19 @@ export default {
     data() {
         return {
             menuStore: useMenuStore(),
-            search: ''
+            search: '',
+            loading: false,
         }
     },
 
     methods: {
         getSearchedMovies() {
-            this.menuStore.onSearchChange(this.search)   
+            this.loading = true
+            setTimeout(() => {
+                this.loading = false
+                this.menuStore.onSearchChange(this.search)
+            }, 5000)
+            
         },
 
         clearSearch () {

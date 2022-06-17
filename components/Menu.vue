@@ -1,17 +1,23 @@
 <template>
     <div class="showMenu">
 
-        <div v-if="search !== ''" class="menus">
-            <div v-for="menu in menuStore.searchedMenu" class="menu" :key="menu.id">
-                <div class="menu-image">
-                    <img :src="require(`../static/Menus/${menu.image}`)" alt="">
+        <div v-if="search !== ''">
+            <div class="menus">
+                <div v-for="menu in menuStore.searchedMenu" class="menu" :key="menu.id">
+                    <div class="menu-image">
+                        <img :src="require(`../static/Menus/${menu.image}`)" alt="">
+                    </div>
+                    <h2>{{menu.title}}</h2>
+                    <p>{{menu.category}}</p>
+                    <div class="menu-flex">
+                        <h3><span>$</span>15.00</h3>
+                        <nuxt-link to="#" class="btn">View Menu</nuxt-link>
+                    </div>
                 </div>
-                <h2>{{menu.title}}</h2>
-                <p>{{menu.category}}</p>
-                <div class="menu-flex">
-                    <h3><span>$</span>15.00</h3>
-                    <nuxt-link to="#" class="btn">View Menu</nuxt-link>
-                </div>
+            </div>
+            
+            <div v-if="menuStore.searchedMenu.length === 0" class="msg">
+                <h2>Sorry the menu that you are looking for is not available</h2>
             </div>
         </div>
 
@@ -53,6 +59,13 @@ export default {
         gap: 20px;
         margin: 50px 0;
         text-align: center;
+    }
+
+    .msg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
     .menu {
