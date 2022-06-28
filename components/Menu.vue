@@ -11,7 +11,7 @@
                     <p>{{menu.category}}</p>
                     <div class="menu-flex">
                         <h3><span>$</span>15.00</h3>
-                        <nuxt-link :to="{name: 'menus-menuid', params:{menuid : menu.id}}" class="btn">View Menu</nuxt-link>
+                        <nuxt-link :to="{name: 'menus-menuid', params:{menuid: menu.id}}" class="btn">View Menu</nuxt-link>
                     </div>
                 </div>
             </div>

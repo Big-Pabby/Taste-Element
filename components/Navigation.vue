@@ -9,7 +9,8 @@
             </nav>
             <div class="nav-icons">
                 <Icon class="icon" icon="bx:search" />
-                <Icon class="icon" icon="akar-icons:cart" />
+                
+                <nuxt-link class="nav-link" to="/cart"><Icon class="icon" icon="akar-icons:cart" /></nuxt-link>
                 <Icon class="icon" icon="icon-park-outline:like" />
                 <Icon class="icon" icon="codicon:account" />
             </div>
