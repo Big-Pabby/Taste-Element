@@ -8,9 +8,7 @@
                 <nuxt-link class="nav-link" to="/contact">Contact</nuxt-link>
             </nav>
             <div class="nav-icons">
-                <Icon class="icon" icon="bx:search" />
-                
-                <nuxt-link class="nav-link" to="/cart"><Icon class="icon" icon="akar-icons:cart" /></nuxt-link>
+                <nuxt-link to="/cart"><Icon class="icon"  id="cart-icon" icon="akar-icons:cart" /><span v-if="menuStore.cart.length != 0" v-show="cartLength">{{menuStore.cart.length}}</span></nuxt-link>
                 <Icon class="icon" icon="icon-park-outline:like" />
                 <Icon class="icon" icon="codicon:account" />
             </div>
@@ -20,10 +18,17 @@
 
 <script>
 import { Icon } from '@iconify/vue2';
+import { useMenuStore } from '~/store/Menu';
 export default {
     components: {
         Icon
-    }
+    },
+    data() {
+        return {
+            menuStore: useMenuStore(),
+            cartLength: true
+        }
+    },
 }
 </script>
 
@@ -35,6 +40,13 @@ export default {
         top: 0;
         width: 100%;
         z-index: 100;
+    }
+
+    span {
+        color: #fff;
+        background: var(--color-bg-secondary);
+        padding: 5px 10px;
+        border-radius: 50%;
     }
 
     .nav-link {
@@ -61,11 +73,19 @@ export default {
         align-items: center;
     }
 
+    .nav-icons {
+        display: flex;
+        gap: 10px;
+    }
+
     .icon {
         font-size: 18px;
         font-weight: bold;
         color: var(--color-bg-primary);
-        margin-right: 10px;
+    }
+
+    #cart-icon {
+        margin-right: none;
     }
   
 @media screen and (max-width: 500px) {
