@@ -12,7 +12,7 @@
         <div class="showcase showcase2-image">
             <div class="content">
                 <h2>Get to know about our Chefs</h2>
-                <button class="btn btn-primary">About Us <Icon class="icon" icon="akar-icons:arrow-right" /></button>
+                <nuxt-link to="/about" class="btn btn-primary">About Us <Icon class="icon" icon="akar-icons:arrow-right" /></nuxt-link>
             </div>
         </div>
     </div>
@@ -82,9 +82,9 @@ export default {
         color: #fff;
     }
 
-    button {
-       display: flex;
-       align-items: center;
+    .btn {
+        display: flex;
+        align-items: center;
     }
 
     .showcase-image {
