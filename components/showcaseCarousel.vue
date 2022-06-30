@@ -1,35 +1,26 @@
 <template>
     <a-carousel autoplay>
     <div>
-        <div class="showcase">
+        <div class="showcase showcase1-image">
             <div class="content">
                 <h2>Hello Victor, Grab your <span>Delicious Meal!!!</span></h2>
-                <button class="btn btn-primary">Menu <Icon class="icon" icon="akar-icons:arrow-right" /></button>
-            </div>
-            <div class="showcase-image">
-                <img src="../static/carousel/delivery-man-removebg-preview.png" class="chefs" alt="">
+                <button class="btn btn-secondary">Menu <Icon class="icon" icon="akar-icons:arrow-right" /></button>
             </div>
         </div>
     </div>
     <div>
-        <div class="showcase">
+        <div class="showcase showcase2-image">
             <div class="content">
                 <h2>Get to know about our Chefs</h2>
                 <button class="btn btn-primary">About Us <Icon class="icon" icon="akar-icons:arrow-right" /></button>
             </div>
-            <div class="showcase-image">
-                <img src="../static/carousel/chefs3-removebg-preview.png" class="chefs" alt="">
-            </div>
         </div>
     </div>
     <div>
-        <div class="showcase">
+        <div class="showcase showcase3-image">
             <div class="content">
                 <h2>Get to view recipes from different chefs and different variety of food around the world.</h2>
                 <button class="btn btn-primary">View Recipes <Icon class="icon" icon="akar-icons:arrow-right" /></button>
-            </div>
-            <div class="showcase-image">
-                <img src="../static/carousel/recipe.png" alt="">
             </div>
         </div>
     </div>
@@ -51,18 +42,32 @@ export default {
     .showcase {
         display: flex;
         align-items: center;
-        justify-content: space-around;
-        background: var(--color-bg-primary);
+        justify-content: flex-start;
         margin-top: 100px;
-        border-radius: 60px;
-        padding: 15px;
+        border-radius: 30px;
+        padding: 15px 20px;
         height: 400px;
+    }
+    .showcase1-image {
+        background: url('../static/carousel/banner-1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .showcase2-image {
+        background: url('../static/carousel/banner-2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .showcase3-image {
+        background: url('../static/carousel/banner-3.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     .content span {
         font-size: 24px;
         font-weight: bold;
-        color: var(--color-bg-secondary);
+        color: var(--color-primary);
     }
 
     .chefs {

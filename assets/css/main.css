@@ -60,6 +60,11 @@ span {
     color: var(--color-primary);
 }
 
+.btn-secondary {
+    background-color: var(--color-bg-primary);
+    color: var(--color-primary);
+}
+
 .link-color {
     color: var(--color-bg-primary);
 }

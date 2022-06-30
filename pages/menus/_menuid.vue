@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="menu-page">
         <Navigation />
         <div class="container">
             <Loading v-show="loading" />
@@ -48,6 +48,7 @@ export default {
             menuStore: useMenuStore(),
             loading: false,
             params: this.$route.params.menuid,
+            cartLength: true,
         }
     },
 
@@ -71,10 +72,13 @@ export default {
 </script>
 
 <style scoped>
+    .menu-page {
+        position: relative;
+    }
 
     .single-menu {
-        padding-top: 100px;
         width: 100%;
+        margin-top: 100px;
         height: 100vh;
         display: flex;
         flex-direction: column;
@@ -135,6 +139,7 @@ export default {
         .menu {
             flex-direction: column;
             text-align: center;
+            margin-top: 30px;
         }
 
         .menu-content {
