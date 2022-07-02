@@ -164,5 +164,9 @@ export default {
     .about-founder {
       grid-template-columns: 1fr;
     }
+
+    .founder-content h2 {
+      text-align: center;
+    }
   }
 </style>

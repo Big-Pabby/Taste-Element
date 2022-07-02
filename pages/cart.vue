@@ -10,6 +10,7 @@
                     <p>{{menu.category}}</p>
                     <div class="content-row">
                         <h3><span>$</span>15.00</h3>
+                        <h4>Quantity</h4>
                         <div class="quantity">
                             <h3 @click="incrementCart(menu)">+</h3>
                             <p>{{ menu.quantity }}</p>
@@ -104,7 +105,7 @@ export default {
     }
 
     .quantity p {
-        margin: 0 15px;
+        margin: 0px 15px 2px;
     }
     .quantity h3 {
         cursor: pointer;
