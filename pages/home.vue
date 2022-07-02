@@ -37,6 +37,7 @@
 
             <Menu v-else :search="search" />
         </div>
+        <Footer />
     </div>
 </template>
 

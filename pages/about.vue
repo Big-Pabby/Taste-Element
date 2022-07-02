@@ -72,6 +72,7 @@
           </a-carousel>
         </div>
       </div>
+      <Footer/>
   </div>
 </template>
 
