@@ -38,8 +38,8 @@ export default {
     }
 
     h4 {
-        background: -webkit-linear-gradient(#ffc529, #fe724c);
         margin-top: 50px;
+        background: -webkit-linear-gradient(#ffc529, #fe724c);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;

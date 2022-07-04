@@ -137,7 +137,9 @@ export default {
   }
 
   .about-showcase-content h1 {
-    color: var(--color-bg-secondary);
+    background: -webkit-linear-gradient(#ffc529, #fe724c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-weight: bold;
   }
   .about-showcase-content p {
