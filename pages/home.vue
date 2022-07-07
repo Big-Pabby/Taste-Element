@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Navigation />
         <div class="container">
             <showcaseCarousel />
 
@@ -37,7 +36,6 @@
 
             <Menu v-else :search="search" />
         </div>
-        <Footer />
     </div>
 </template>
 
@@ -45,7 +43,7 @@
 import { useMenuStore } from '~/store/Menu';
 
 export default {
-
+    layout: "userLayout",
     data() {
         return {
             menuStore: useMenuStore(),

@@ -1,6 +1,5 @@
 <template>
     <div class="contact-page">
-        <Navigation />
         <div class="container">
             <div class="contact-showcase">
                 <h1>Contact Us</h1>
@@ -10,17 +9,17 @@
             <form>
                 <h3>Send A Message</h3>
                 <div class="input input-name">
-                    <input type="text" placeholder="Your First Name">
-                    <input type="text" placeholder="Your Last Name">
+                    <input type="text" placeholder="Your First Name" required>
+                    <input type="text" placeholder="Your Last Name" required>
                 </div>
                 <div class="input input-email">
-                    <input type="email" placeholder="Your Email Address">
+                    <input type="email" placeholder="Your Email Address" required>
                 </div>
                 <div class="input input-phone">
-                    <input type="tel" placeholder="Your Phone Number">
+                    <input type="tel" placeholder="Your Phone Number" required>
                 </div>
                 <div class="input-message">
-                    <textarea placeholder="How Can We Help?" cols="30" rows="10"></textarea>
+                    <textarea placeholder="How Can We Help?" cols="30" rows="10" required></textarea>
                 </div>
                 <input type="submit" class="btn btn-primary" value="SUBMIT">
             </form>
@@ -49,13 +48,13 @@
                 </div>
             </div>
         </div>
-        <Footer />
     </div>
 </template>
 
 <script>
 import { Icon } from '@iconify/vue2';
 export default {
+    layout: "userLayout",
     components: {
         Icon
     },

@@ -10,7 +10,7 @@
             <div class="nav-icons">
                 <nuxt-link to="/cart"><Icon class="icon"  id="cart-icon" icon="akar-icons:cart" /><span v-if="menuStore.cart.length != 0" v-show="cartLength">{{menuStore.cart.length}}</span></nuxt-link>
                 <Icon class="icon" icon="icon-park-outline:like" />
-                <Icon class="icon" icon="codicon:account" />
+                <Icon class="icon icon-none" icon="codicon:account" />
             </div>
         </header>
     </div>
@@ -88,8 +88,8 @@ export default {
         margin-right: none;
     }
   
-@media screen and (max-width: 500px) {
-    nav {
+@media screen and (max-width: 700px) {
+    nav, .icon-none {
         display: none;
     }
 }

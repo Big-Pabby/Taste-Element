@@ -1,6 +1,5 @@
 <template>
   <div class="about-page">
-      <Navigation />
       <div class="container">
         <div class="about-showcase">
           <div class="about-showcase-content animate__backInRight">
@@ -72,14 +71,13 @@
           </a-carousel>
         </div>
       </div>
-      <Footer/>
   </div>
 </template>
 
 <script>
   import 'animate.css';
 export default {
-
+  layout: "userLayout",
 }
 </script>
 
