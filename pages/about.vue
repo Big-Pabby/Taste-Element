@@ -3,16 +3,16 @@
       <Navigation />
       <div class="container">
         <div class="about-showcase">
-          <div class="about-showcase-content">
+          <div class="about-showcase-content animate__backInRight">
             <h1>About Us</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, harum. (Mean't to have the restaurant motto but you get the gist😅😅)</p>
           </div>
         </div>
 
-        <h1 class="founder-header">Meet The Founder</h1>
+        <h1 class="founder-header animate__fadeIn">Meet The Founder</h1>
 
         <div class="about-founder">
-          <div class="founder-image">
+          <div class="founder-image animate__fadeInLeftBig">
             <img src="../static/about-Image/avatar-1.jpg" alt="founder-image">
           </div>
           <div class="founder-content">
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+  import 'animate.css';
 export default {
 
 }
@@ -100,6 +101,9 @@ export default {
   .about-showcase-content {
     text-align: right;
     max-width: 400px;
+
+    animation: backInRight; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
   }
 
   .the-team {
@@ -111,6 +115,8 @@ export default {
     text-align: center;
     padding-bottom: 5px;
     border-bottom: 1px solid black;
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
   }
 
   .carousel {
@@ -152,6 +158,8 @@ export default {
     margin-top: 30px;
     padding-bottom: 5px;
     border-bottom: 1px solid black;
+    animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
   }
 
   .about-founder {
@@ -161,6 +169,11 @@ export default {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: center;
+  }
+
+  .founder-image {
+    animation: fadeInLeftBig; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s;
   }
 
   @media screen and (max-width: 760px) {

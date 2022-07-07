@@ -22,7 +22,7 @@
         </div>
 
         <div v-else class="menus">
-            <div v-for="menu in menuStore.Menus" class="menu" :key="menu.id">
+            <div v-for="menu in menuStore.Menus" class="menu animate__zoomIn" :key="menu.id">
                 <div class="menu-image">
                     <img :src="require(`../static/Menus/${menu.image}`)" alt="">
                 </div>
@@ -71,6 +71,8 @@ export default {
     .menu {
          padding: 20px 10px;
          border-radius: 30px 30px 0 0;
+         animation: zoomIn; /* referring directly to the animation's @keyframe declaration */
+         animation-duration: 2s;
     }
 
     .menu-image img {

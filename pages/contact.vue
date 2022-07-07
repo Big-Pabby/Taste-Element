@@ -82,6 +82,8 @@ export default {
         -webkit-text-fill-color: transparent;
         text-align: center;
         font-weight: bold;
+        animation: fadeIn; /* referring directly to the animation's @keyframe declaration */
+        animation-duration: 2s;
     }
 
     .contact-showcase p {
@@ -142,6 +144,8 @@ export default {
         border-radius: 20px;
         text-align: center;
         padding: 20px;
+        animation: zoomIn; /* referring directly to the animation's @keyframe declaration */
+         animation-duration: 2s;
     }
 
     .card:hover {
