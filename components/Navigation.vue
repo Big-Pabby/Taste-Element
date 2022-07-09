@@ -8,9 +8,14 @@
                 <nuxt-link class="nav-link" to="/contact">Contact</nuxt-link>
             </nav>
             <div class="nav-icons">
-                <nuxt-link to="/cart"><Icon class="icon"  id="cart-icon" icon="akar-icons:cart" /><span v-if="menuStore.cart.length != 0" v-show="cartLength">{{menuStore.cart.length}}</span></nuxt-link>
-                <Icon class="icon" icon="icon-park-outline:like" />
-                <Icon class="icon icon-none" icon="codicon:account" />
+                <nuxt-link class="cart" to="/cart">
+                    <Icon class="icon"  id="cart-icon" icon="akar-icons:cart" />
+                    <div v-if="menuStore.cart.length != 0" v-show="cartLength" class="item-count">
+                        <span>{{menuStore.cart.length}}</span>
+                    </div>
+                </nuxt-link>
+                <nuxt-link to="/favourite"><Icon class="icon" icon="icon-park-outline:like" /></nuxt-link>
+                <nuxt-link to="/userPage"><Icon class="icon icon-none" icon="codicon:account" /></nuxt-link>
             </div>
         </header>
     </div>
@@ -42,11 +47,27 @@ export default {
         z-index: 100;
     }
 
-    span {
+    .cart {
+        position: relative;
+    }
+
+    .item-count {
+        position: absolute;
+        display: grid;
         color: #fff;
+        place-items: center;
         background: var(--color-bg-secondary);
-        padding: 5px 10px;
+        z-index: 10;
         border-radius: 50%;
+        font-size: 10px;
+        height: 14px;
+        width: 14px;
+        top: -50%;
+        right: -50%;
+    }
+
+    span {
+        color: var(--color-primary);
     }
 
     .nav-link {
