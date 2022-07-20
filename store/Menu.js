@@ -10,6 +10,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Meat Balls',
                     image: 'meatballs.webp',
                     category: 'Meat',
+                    price: 20,
                     quantity: 1
                 },
                 {
@@ -17,6 +18,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Mississippi Mud Pie',
                     image: 'mississippi-mud-pie.webp',
                     category: 'Pastery',
+                    price: 30,
                     quantity: 1
                 },
 
@@ -25,6 +27,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Strawberry Rhubarb Pie',
                     image: 'strawberry-rhubarb-pie.webp',
                     category: 'Pastery',
+                    price: 45,
                     quantity: 1
                 },
 
@@ -33,6 +36,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Lobster Roll',
                     image: 'lobster-roll.webp',
                     category: 'Pastery',
+                    price: 15,
                     quantity: 1
                 },
 
@@ -41,6 +45,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Mini Corn Dogs',
                     image: 'mini-corn-dogs.webp',
                     category: 'Pastery',
+                    price: 15,
                     quantity: 1
                 },
 
@@ -49,6 +54,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Nashville Hot Chicken',
                     image: 'nashville-hot-chicken.webp',
                     category: 'Meat',
+                    price: 15,
                     quantity: 1
                 },
 
@@ -57,6 +63,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Roasted Pheasant',
                     image: 'roasted-pheasant.webp',
                     category: 'Meat',
+                    price: 75,
                     quantity: 1
                 },
 
@@ -73,6 +80,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Elk Burger',
                     image: 'elk-burger.webp',
                     category: 'Burger',
+                    price: 50,
                     quantity: 1
                 },
 
@@ -81,6 +89,7 @@ export const useMenuStore = defineStore("menu's", {
                     title: 'Cornmeal Johnnycakes',
                     image: 'cornmeal-johnnycakes.webp',
                     category: 'Pastery',
+                    price: 100,
                     quantity: 1
                 },
             ],
@@ -104,7 +113,14 @@ export const useMenuStore = defineStore("menu's", {
 
         getCart: (state) => state.cart,
         searchedMenu: (state) => state.searchMenu,
-        fetchSingleMenu: (state) => state.singleMenu
+        fetchSingleMenu: (state) => state.singleMenu,
+        cartTotalPrice: (state) => {
+            let total = 0;
+            state.cart.forEach(item => {
+                total += item.price * item.quantity;
+            });
+            return total 
+        },
     },
 
     actions: {
@@ -137,6 +153,12 @@ export const useMenuStore = defineStore("menu's", {
                 return
             }
             this.cart.push(singMenu)
+        },
+
+        deleteCart(id) {
+            this.cart = this.cart.filter(item => {
+                return item.id !== id
+            })
         },
 
         getSingleMenu(id) {

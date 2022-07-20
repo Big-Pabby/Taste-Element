@@ -29,7 +29,7 @@
                 <h2>{{menu.title}}</h2>
                 <p>{{menu.category}}</p>
                 <div class="menu-flex">
-                    <h3><span>$</span>15.00</h3>
+                    <h3><span>$</span>{{menu.price}}</h3>
                     <nuxt-link :to="{name: 'menus-menuid', params:{menuid : menu.id}}" class="btn">View Menu</nuxt-link>
                 </div>
             </div>

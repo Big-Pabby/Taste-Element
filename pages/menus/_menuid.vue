@@ -22,7 +22,7 @@
                 <div class="menu-btn">
                     <div class="price">
                         <h2>Price</h2>
-                        <h3><span>$</span>15.00</h3>
+                        <h3><span>$</span>{{menu.price}}</h3>
                     </div>
                     <button class="btn btn-primary" @click="addMenuToCart(menu)">+ Add to cart</button>
                 </div>
@@ -58,8 +58,6 @@ export default {
             this.loading = false
             this.menuStore.getSingleMenu(this.params)
             this.movie = this.menuStore.fetchSingleMenu
-            console.log(this.params)
-            console.log(this.movie)
         }, 1000)
     },
 

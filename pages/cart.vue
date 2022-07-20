@@ -1,46 +1,49 @@
 <template>
     <div class="cart">
-        <div v-for="menu in cartItems" class="container" :key="menu.id">
-            <div class="menu">
-                <div class="menu-image">
-                    <img :src="require(`../static/Menus/${menu.image}`)" alt="">
-                </div>
-                <div class="menu-content">
-                    <h2>{{menu.title}}</h2>
-                    <p>{{menu.category}}</p>
-                    <div class="content-row">
-                        <h3><span>$</span>15.00</h3>
-                        <div class="quantity">
-                            <h3 @click="incrementCart(menu)">+</h3>
-                            <p>{{ menu.quantity }}</p>
-                            <h3 @click="decrementCart(menu)">-</h3>
+        <div class="container">
+            <div v-for="menu in menuStore.cart" :key="menu.id">
+                <div class="menu">
+                    <div class="menu-image">
+                        <img :src="require(`../static/Menus/${menu.image}`)" alt="">
+                    </div>
+                    <div class="menu-content">
+                        <h2>{{menu.title}}</h2>
+                        <p>{{menu.category}}</p>
+                        <div class="content-row">
+                            <h3><span>$</span>{{menu.price}}</h3>
+                            <div class="quantity">
+                                <h3 @click="incrementCart(menu)">+</h3>
+                                <p>{{ menu.quantity }}</p>
+                                <h3 @click="decrementCart(menu)">-</h3>
+                            </div>
                         </div>
+                        <button @click="deleteItem(menu.id)" class="btn btn-primary"><Icon  class="trash" icon="bi:trash" /> Delete</button>
                     </div>
                 </div>
             </div>
+            <div class="total">
+                <button class="btn btn-secondary">Total Price: {{menuStore.cartTotalPrice}}</button>
+            </div>
         </div>
+        
     </div>
 </template>
 
 <script>
 import { useMenuStore } from '~/store/Menu';
+import { Icon } from '@iconify/vue2';
 
 export default {
+
+    components: {
+        Icon
+    },
+
     data() {
         return {
             menuStore: useMenuStore(),
             loading: false,
-            cartItems: null
         }
-    },
-
-    mounted() {
-        this.loading = true
-        setTimeout(() => {
-            this.loading = false
-            this.cartItems = this.menuStore.getCart
-            console.log(this.cartItems)
-        }, 1000)
     },
 
     methods: {
@@ -49,6 +52,10 @@ export default {
         },
         decrementCart(cartItem) {
             this.menuStore.decrement(cartItem)
+        },
+
+        deleteItem(id) {
+            this.menuStore.deleteCart(id)
         },
     },
 }
@@ -70,6 +77,20 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    button  {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        
+    }
+
+    .total {
+        text-align: center;
+        max-width: 200px;
+        margin: 50px auto
     }
 
     .menu-content {
