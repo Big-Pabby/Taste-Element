@@ -1,6 +1,7 @@
 <template>
   <div class="SignUp">
-    <Alert />
+    <Alert v-show="alert" :msg="msg" />
+    <Loading v-show="loading" />
     <div class="signup-flex">
       <div class="signup-left">
         <div class="signUp-header">
@@ -41,6 +42,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'register',
     data() {
@@ -49,7 +51,9 @@ export default {
             inputEmail: "",
             inputPassword: "",
             confirmPassword: "",
-            msg: ""
+            msg: "",
+            loading: false,
+            alert: false
         }
     },
 
@@ -65,13 +69,25 @@ export default {
                         password: this.inputPassword
                     })
                 })
-                const user = res.json();
-                if(user) {
-                  this.msg = "Registration was a success"
+                const user = await res.json();
+                console.log(user)
+                if(user !== "Registration failed email already exist") {
+                  this.msg = "Registration was successful"
+                  this.loading = true
+                  this.alert = true
                   setTimeout(() => {
-                      this.msg = ""
+                      this.alert= false;
+                      this.loading = false;
+                      this.$router.push({ path: '/login'});
                   }, 5000)
-                  this.$router.push({ path: '/login'})
+                } else {
+                  this.msg = "Registration failed email already exist";
+                  this.loading = true;
+                  this.alert = true;
+                  setTimeout(() => {
+                      this.alert= false;
+                      this.loading = false;
+                  }, 5000)
                 }
 
             } else {
@@ -136,7 +152,7 @@ export default {
   input {
     width: 300px;
     border-radius: 10px;
-    padding: 10px 5px;
+    padding: 10px 15px;
     background: #f4f4f4;
     border: none;
     outline-color: var(--color-bg-primary);

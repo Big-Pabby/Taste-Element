@@ -14,6 +14,9 @@ export default {
 .loading {
     height: 100vh;
     width: 100%;
+    z-index: 50;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     display: flex;
     justify-content: center;
     align-items: center;
