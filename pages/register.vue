@@ -1,5 +1,6 @@
 <template>
   <div class="SignUp">
+    <Alert />
     <div class="signup-flex">
       <div class="signup-left">
         <div class="signUp-header">
@@ -9,24 +10,25 @@
           <p class="login">Already have an account? <nuxt-link to="/login" class="link-color">Log In</nuxt-link></p>
         </div>
 
-        <form action="">
+        <form @submit.prevent="onRegister">
           <div class="input-field">
             <label for="name">Name</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" v-model="inputName" required>
           </div>
           <div class="input-field">
             <label for="email">Email</label>
-            <input type="email" name="email" required>
+            <input type="email" name="email" v-model="inputEmail" required>
           </div>
           <div class="input-field">
             <label for="password">Password</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" v-model="inputPassword" required>
           </div>
           <div class="input-field">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" name="confirmPassword" required>
+            <input type="password" name="confirmPassword" v-model="confirmPassword" required>
           </div>
           <input class="signup-btn" type="submit" value="Sign Up">
+          <p>{{msg}}</p>
         </form>
       </div>
 
@@ -41,6 +43,46 @@
 <script>
 export default {
     name: 'register',
+    data() {
+        return {
+            inputName: "",
+            inputEmail: "",
+            inputPassword: "",
+            confirmPassword: "",
+            msg: ""
+        }
+    },
+
+    methods: {
+        async onRegister() {
+            if(this.inputPassword === this.confirmPassword) {
+                const res = await fetch('http://localhost:3001/register', {
+                    method: 'post',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        name: this.inputName,
+                        email: this.inputEmail,
+                        password: this.inputPassword
+                    })
+                })
+                const user = res.json();
+                if(user) {
+                  this.msg = "Registration was a success"
+                  setTimeout(() => {
+                      this.msg = ""
+                  }, 5000)
+                  this.$router.push({ path: '/login'})
+                }
+
+            } else {
+                this.msg = "Invalid Password"
+               setTimeout(() => {
+                   this.msg = ""
+               }, 5000)
+               
+            }
+        }
+    },
 }
 </script>
 
