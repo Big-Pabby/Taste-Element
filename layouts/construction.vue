@@ -5,6 +5,7 @@
             <p>Sorry the page you are looking for is under construction</p>
             <h3>But don't worry you can find plenty of other things on our  homepage.</h3>
             <nuxt-link to="/home" class="btn btn-primary">Back to homepage</nuxt-link>
+            <button class="btn btn-secondary" @click="logout">logout</button>
         </div>
         <div class="error-image">
             <img src="../static/construction.svg" alt="error">
@@ -13,8 +14,21 @@
 </template>
 
 <script>
-export default {
+import { userData } from '~/store/userData';
 
+export default {
+    data() {
+        return {
+            user: userData(),
+        }
+    },
+
+    methods: {
+        logout() {
+            this.user.logoutUser()
+            this.$router.push({ path: '/login'});
+        }
+    },
 }
 </script>
 

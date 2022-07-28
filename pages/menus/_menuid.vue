@@ -1,8 +1,8 @@
 <template>
     <div class="menu-page">
         <Navigation />
+        <MenuLoader v-show="loading" />
         <div class="container">
-            <Loading v-show="loading" />
             <div v-for="menu in movie" class="single-menu" :key="menu.id">
                 <div class="menu">
                     <div class="menu-image">

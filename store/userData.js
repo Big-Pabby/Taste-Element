@@ -18,5 +18,11 @@ export const userData = defineStore("user", {
             this.user = user;
             this.isLoggedIn = true;
         },
+        logoutUser() {
+            this.user = {};
+            this.isLoggedIn = false;
+        },
+
+
     }
 })

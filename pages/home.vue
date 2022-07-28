@@ -32,8 +32,7 @@
                 </div>
             </div>
 
-            <Loading v-if="loading" />
-
+            <MenuLoader v-if="loading"/>
             <Menu v-else :search="search" />
         </div>
     </div>
@@ -83,6 +82,10 @@ export default {
 </script>
 
 <style scoped>
+
+    .container {
+        position: relative;
+    }
 
     .category {
         background: var(--color-bg-secondary);
