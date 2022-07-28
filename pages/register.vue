@@ -1,6 +1,6 @@
 <template>
   <div class="SignUp">
-    <Alert v-show="alert" :msg="msg" />
+    <Alert v-show="alert" :msg="msg" :successAlert="successAlert" :errorAlert="errorAlert" />
     <Loading v-show="loading" />
     <div class="signup-flex">
       <div class="signup-left">
@@ -29,7 +29,7 @@
             <input type="password" name="confirmPassword" v-model="confirmPassword" required>
           </div>
           <input class="signup-btn" type="submit" value="Sign Up">
-          <p>{{msg}}</p>
+          <p class="error-msg">{{msg}}</p>
         </form>
       </div>
 
@@ -53,7 +53,9 @@ export default {
             confirmPassword: "",
             msg: "",
             loading: false,
-            alert: false
+            alert: false,
+            successAlert: false,
+            errorAlert: false
         }
     },
 
@@ -73,19 +75,23 @@ export default {
                 console.log(user)
                 if(user !== "Registration failed email already exist") {
                   this.msg = "Registration was successful"
+                  this.successAlert = true
                   this.loading = true
                   this.alert = true
                   setTimeout(() => {
                       this.alert= false;
                       this.loading = false;
+                      this.successAlert = false
                       this.$router.push({ path: '/login'});
                   }, 5000)
                 } else {
                   this.msg = "Registration failed email already exist";
                   this.loading = true;
                   this.alert = true;
+                  this.errorAlert = true;
                   setTimeout(() => {
                       this.alert= false;
+                      this.errorAlert = false;
                       this.loading = false;
                   }, 5000)
                 }
@@ -172,6 +178,10 @@ export default {
     background: transparent;
     border: 1px solid var(--color-bg-secondary);
     color: var(--color-primary);
+  }
+
+  .error-msg {
+    color: red;
   }
 
   @media screen and (max-width: 960px) {

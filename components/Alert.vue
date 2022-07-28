@@ -1,5 +1,9 @@
 <template>
-  <div class="alert">
+  <div v-if="errorAlert" class="alert">
+    <Icon icon="ci:notification-dot" />
+    <div class="msg">{{msg}}</div>
+  </div>
+  <div v-else class="alert alert-green">
     <Icon icon="ci:notification-dot" />
     <div class="msg">{{msg}}</div>
   </div>
@@ -9,7 +13,7 @@
 import { Icon } from '@iconify/vue2';
 
 export default {
-    props: ['msg'],
+    props: ['msg', 'successAlert', 'errorAlert'],
     components: {
 		Icon,
 	},
@@ -26,11 +30,15 @@ export default {
         top: 30px;
         z-index: 100;
         color: #fff;
-        background: var(--color-bg-primary);
+        background: red;
         padding: 10px 20px;
         border-radius: 5px;
         font-weight: bold;
         font-size: 18px
+    }
+
+    .alert-green {
+      background: #23a74f;
     }
 
     .msg {

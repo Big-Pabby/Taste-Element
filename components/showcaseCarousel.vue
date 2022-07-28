@@ -3,7 +3,7 @@
     <div>
         <div class="showcase showcase1-image">
             <div class="content">
-                <h2>Hello Victor, Grab your <span>Delicious Meal!!!</span></h2>
+                <h2>Hello  <span>{{user.getUserData.username}}</span>, Grab your Delicious Meal!!!</h2>
                 <button class="btn btn-secondary">Menu <Icon class="icon" icon="akar-icons:arrow-right" /></button>
             </div>
         </div>
@@ -29,12 +29,18 @@
 
 <script>
 import { Icon } from '@iconify/vue2';
+import { userData } from '~/store/userData';
 
 export default {
     components: {
         Icon,
     },
 
+    data() {
+        return {
+            user: userData()
+        }
+    },
 }
 </script>
 
