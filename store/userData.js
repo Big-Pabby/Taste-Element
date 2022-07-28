@@ -16,7 +16,7 @@ export const userData = defineStore("user", {
     actions: {
         logUser(user) {
             this.user = user;
-            this.isLoggedIn = true
+            this.isLoggedIn = true;
         },
     }
 })
