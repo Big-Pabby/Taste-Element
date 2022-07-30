@@ -78,6 +78,7 @@
   import 'animate.css';
 export default {
   layout: "userLayout",
+  middleware: 'authenticated',
 }
 </script>
 

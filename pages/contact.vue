@@ -55,6 +55,7 @@
 import { Icon } from '@iconify/vue2';
 export default {
     layout: "userLayout",
+    middleware: 'authenticated',
     components: {
         Icon
     },

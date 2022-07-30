@@ -43,6 +43,7 @@ import { useMenuStore } from '~/store/Menu';
 
 export default {
     layout: "userLayout",
+    middleware: 'authenticated',
     data() {
         return {
             menuStore: useMenuStore(),

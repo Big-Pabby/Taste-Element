@@ -38,6 +38,7 @@ export default {
     components: {
         Icon
     },
+    middleware: 'authenticated',
 
     data() {
         return {

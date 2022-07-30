@@ -1,9 +1,9 @@
 <template>
-  <div v-if="errorAlert" class="alert">
+  <div v-if="errorAlert" class="alert animate__fadeInLeftBig">
     <Icon icon="ci:notification-dot" />
     <div class="msg">{{msg}}</div>
   </div>
-  <div v-else class="alert alert-green">
+  <div v-else class="alert alert-green animate__fadeInLeftBig">
     <Icon icon="ci:notification-dot" />
     <div class="msg">{{msg}}</div>
   </div>
@@ -11,6 +11,7 @@
 
 <script>
 import { Icon } from '@iconify/vue2';
+import 'animate.css';
 
 export default {
     props: ['msg', 'successAlert', 'errorAlert'],
@@ -34,7 +35,9 @@ export default {
         padding: 10px 20px;
         border-radius: 5px;
         font-weight: bold;
-        font-size: 18px
+        font-size: 18px;
+        animation: fadeInLeftBig; /* referring directly to the animation's @keyframe declaration */
+        animation-duration: 2s;
     }
 
     .alert-green {

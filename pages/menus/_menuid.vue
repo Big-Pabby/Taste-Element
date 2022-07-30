@@ -38,6 +38,7 @@ import { Icon } from '@iconify/vue2';
 
 export default {
     name: 'single-menu',
+    middleware: 'authenticated',
     components: {
         Icon
     },
