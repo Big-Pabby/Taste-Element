@@ -52,7 +52,7 @@ export default {
     methods: {
         async onLogin() {
           try {
-            const res = await fetch('http://localhost:3001/login', {
+            const res = await fetch('https://stark-crag-30027.herokuapp.com/login', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
