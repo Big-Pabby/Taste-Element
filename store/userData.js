@@ -5,8 +5,8 @@ import { defineStore } from "pinia";
 export const userData = defineStore("user", {
     state: () => {
         return {
-            user: {},
-            isLoggedIn: false,
+            user: JSON.parse(localStorage.getItem('user')),
+            isLoggedIn: JSON.parse(localStorage.getItem('authUser')),
         }
     },
 
@@ -15,13 +15,18 @@ export const userData = defineStore("user", {
     },
 
     actions: {
-        logUser(user) {
+        logUser(user, auth) {
             this.user = user;
-            this.isLoggedIn = true;
+            localStorage.setItem('user', JSON.stringify(user));
+            this.isLoggedIn = auth;
+            localStorage.setItem('authUser', JSON.stringify(auth))
         },
         logoutUser() {
-            this.user = {};
+            localStorage.removeItem('authUser')
+            localStorage.removeItem('user')
             this.isLoggedIn = false;
+            this.user = {};
+            
         },
 
 

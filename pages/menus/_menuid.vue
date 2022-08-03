@@ -43,25 +43,26 @@ export default {
         Icon
     },
 
+    mounted() {
+        this.loading = true
+        setTimeout(() => {
+            this.loading = false
+            this.menuStore.getSingleMenu(this.$route.params.menuid)
+            this.movie = this.menuStore.fetchSingleMenu
+        }, 1000)
+    },
+
+
     data() {
         return {
             movie: null,
             menuStore: useMenuStore(),
             loading: false,
-            params: this.$route.params.menuid,
             cartLength: true,
         }
     },
 
-    mounted() {
-        this.loading = true
-        setTimeout(() => {
-            this.loading = false
-            this.menuStore.getSingleMenu(this.params)
-            this.movie = this.menuStore.fetchSingleMenu
-        }, 1000)
-    },
-
+    
     methods: {
         addMenuToCart(menu) {
             this.menuStore.addToCart(menu)

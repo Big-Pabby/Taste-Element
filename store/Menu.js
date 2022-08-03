@@ -3,6 +3,8 @@ import { defineStore } from "pinia";
 
 export const useMenuStore = defineStore("menu's", {
     state: () => {
+        let cart = localStorage.getItem('cart')
+        let getMenu = localStorage.getItem('getMenu')
         return {
             menus: [
                 {
@@ -97,8 +99,8 @@ export const useMenuStore = defineStore("menu's", {
             searchMenu: [],
             category: '',
             searchField: '',
-            singleMenu: {},
-            cart: []
+            singleMenu: getMenu ? JSON.parse(getMenu) : {},
+            cart: cart ? JSON.parse(cart) : [],
         }
     },
 
@@ -144,6 +146,11 @@ export const useMenuStore = defineStore("menu's", {
             this.searchField = ''
         },
 
+        saveCart() {
+            localStorage.setItem("cart", JSON.stringify(this.cart));
+            localStorage.setItem("getMenu", JSON.stringify(this.singleMenu));
+        },
+
         addToCart(singMenu) {
             let productInCart = this.cart.find(item => {
                 return item.id === singMenu.id
@@ -151,20 +158,28 @@ export const useMenuStore = defineStore("menu's", {
             if (productInCart) {
                 productInCart.quantity += 1;
                 return
+            } else {
+                this.cart.push(singMenu)
             }
-            this.cart.push(singMenu)
+
+            this.saveCart()
+            
         },
 
         deleteCart(id) {
             this.cart = this.cart.filter(item => {
                 return item.id !== id
             })
+
+            this.saveCart()
         },
 
         getSingleMenu(id) {
             this.singleMenu = this.menus.filter(menu => {
                 return menu.id === id
             })
+
+            this.saveCart()
         },
 
         meatCategory() {
@@ -190,5 +205,7 @@ export const useMenuStore = defineStore("menu's", {
                 this.cart.quantity = cartItem.quantity--
             }
         },
-    }
+    },
+
+    persist: true,
 })

@@ -51,6 +51,7 @@ export default {
 
     methods: {
         async onLogin() {
+          try {
             const res = await fetch('http://localhost:3001/login', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
@@ -80,10 +81,23 @@ export default {
                   this.alert= false;
                   this.successAlert= false;
                   this.loading = false;
-                  userData().logUser(user);
+                  const auth = true
+                  userData().logUser(user, auth);
                   this.$router.push({ path: '/home'});
               }, 5000)
             }
+          } catch (e) {
+            this.msg = "No Internet Connection"
+              this.loading = true
+              this.errorAlert = true
+              this.alert = true
+              setTimeout(() => {
+                  this.alert= false;
+                  this.errorAlert= false;
+                  this.loading = false;
+              }, 5000)
+          }
+            
         }
     }
 }
