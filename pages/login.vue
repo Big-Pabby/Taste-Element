@@ -52,7 +52,7 @@ export default {
     methods: {
         async onLogin() {
           try {
-            const res = await fetch('https://stark-crag-30027.herokuapp.com/login', {
+            const res = await fetch('https://taste-element-api.onrender.com/login', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
