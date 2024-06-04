@@ -62,7 +62,7 @@ export default {
     methods: {
         async onRegister() {
             if(this.inputPassword === this.confirmPassword) {
-                const res = await fetch('https://stark-crag-30027.herokuapp.com/register', {
+                const res = await fetch('https://taste-element-api.onrender.com/register', {
                     method: 'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
